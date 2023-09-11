@@ -37,3 +37,32 @@ int is_alpha(int c)
 /**
  * _atoi - converts a string to int
  * @s: string
+ * Return: converted int or 0
+*/
+int _atoi(char *s)
+{
+	int i, sign = 1, flag = 0, output;
+	unsigned int res = 0;
+
+	for (i = 0; s[i] != '\0' && flag != 2; i++)
+	{
+		if (s[i] == '-')
+			sign *= -1;
+
+		if (s[i] >= '0' && s[i] <= '9')
+		{
+			flag = 1;
+			res *= 10;
+			res += (s[i] - '0');
+		}
+		else if (flag == 1)
+			flag = 2;
+	}
+	if (sign == -1)
+	{
+		output = -res;
+	}
+	else
+		output = res;
+	return (output);
+}
