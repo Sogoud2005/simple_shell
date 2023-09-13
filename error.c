@@ -80,4 +80,52 @@ int print_d(int input, int fd)
 	count++;
 	return (count);
 }
+/**
+ * convert_num - a clone of itoa
+ * @num: number
+ * @base: base
+ * @flags: arguments flags
+ * Return: string
+*/
+char *convert_num(long int num, int base, int flags)
+{
+	static char *array;
+	static char buf[50];
+	char sign = 0;
+	char *ptr;
+	unsigned long int n = num;
 
+	if (!(flags & CONVERT_UNSIGNED) && num < 0)
+	{
+		n = -num;
+		sign = '-';
+	}
+	array = flags & CONVERT_LOWERCASE ? "0123456789abcdef" : "0123456789ABCDEF";
+	ptr = &buf[49];
+	*ptr = '\0';
+
+	while (n != 0)
+	{
+		*--ptr = array[n % base];
+		n /= base;
+	}
+	if (sign)
+		*--ptr = sign;
+	return (ptr);
+}
+/**
+ * remove_comments - replaces the first # with '\0'
+ * @str: string to modify
+ * Return: 0;
+*/
+void remove_comments(char *str)
+{
+	int i;
+
+	for (i = 0; str[i] != '\0'; i++)
+		if (str[i] == '#' && (!i || str[i - 1] == ' '))
+		{
+			str[i] = '\0';
+			break;
+		}
+}

@@ -1,10 +1,11 @@
 #include "shell.h"
 
 /**
- * _memset = sets bytes to b
+ * _memset - sets bytes to b
  * @s: string
  * @c: character
  * @n: n
+ * Return: 0
 */
 void *_memset(void *s, int c, size_t n)
 {
