@@ -93,4 +93,14 @@ typedef struct passinfo
 	0, 0, 0}
 
 /**
- *
+ * struct builtin - a builtin string of related function
+ * @type: the builtin command flag
+ * @func: the function
+*/
+typedef struct builtin
+{
+	char *type;
+	int (*func)(info_t *);
+} builtin_table;
+
+
