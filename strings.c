@@ -42,7 +42,7 @@ int _strcmp(char *str1, char *str2)
  * @needle: needle to find
  * Return: address of the next char of haystack
 */
-char *start_with(const char *haystack, const char *needle)
+char *starts_with(const char *haystack, const char *needle)
 {
 	while (*needle)
 	{
