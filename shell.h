@@ -2,7 +2,7 @@
 #define _SHELL_H
 
 #include <stdio.h>
-#include <sys/type.h>
+#include <sys/types.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
 #include <limits.h>
@@ -103,4 +103,34 @@ typedef struct builtin
 	int (*func)(info_t *);
 } builtin_table;
 
+/* hsh.c */
+int hsh(info_t *, char **);
+int find_builtin(info_t *);
+void find_cmd(info_t *);
+void fork_cmd(info_t *);
 
+/* path.c */
+int is_cmd(info_t *, char *);
+char *dup_chars(char *, int, int);
+char *find_path(info_t *, char *, char *);
+
+/* loophsh.c */
+int loophsh(char **);
+
+/* err_str.c */
+void _eputs(char *str);
+int _eputchar(char c);
+int _putfd(char c, int fd);
+int _putsfd(char *str, int fd);
+
+/* strings.c */
+int _strlen(char *str);
+int _strcmp(char *str1, char *str2);
+char *starts_with(const char *haystack, const char *needle);
+char *_strcat(char *dest, char *src);
+
+/* strings1.c */
+char *_strcpy(char *dest, char *src);
+char *_strdup(char *str);
+void _puts(char *str);
+int _putchar(char c);

@@ -52,6 +52,13 @@ char **list_to_strings(list_t *head)
 	strs[i] = NULL;
 	return (strs);
 }
+/**
+ * node_starts_with - finds A node
+ * @node: node pointer
+ * @prefix: search
+ * @c: char
+ * Return: node or NULL
+*/
 list_t *node_starts_with(list_t *node, char *prefix, char c)
 {
 	char *p = NULL;
